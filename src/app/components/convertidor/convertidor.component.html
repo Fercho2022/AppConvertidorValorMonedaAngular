@@ -1,0 +1,51 @@
+<div class="container mt-3">
+  <div class="row">
+
+    <div class="col-lg-12">
+      <div class="mb-3">
+        <label for="cantidad" class="form-label" >Ingrese cantidad</label>
+        <input  type="number"
+                [(ngModel)]="cantidad"
+                class="form-control form-control-lg"
+                id="cantidad"
+                 placeholder="Ingrese cantidad.."
+                (input)="convertir()">
+      </div>
+    </div>
+    <div class="row">
+
+      <div class="col-lg-6">
+        <label for="tengo" class="form-label">Tengo</label>
+        <select class="form-select form-select-lg"
+                aria-label="Default select example"
+                id="tengo"
+                [(ngModel)]="tengo"
+                (change)="convertir()">
+
+          <option *ngFor="let moneda of monedas">{{moneda}}</option>
+
+        </select>
+      </div>
+      <div class="col-lg-6">
+
+        <label for="quiero" class="form-label">Quiero</label>
+        <select class="form-select form-select-lg"
+                aria-label="Default select example"
+                id="quiero"
+                [(ngModel)]="quiero"
+                (change)="convertir()">
+
+          <option *ngFor="let moneda of monedas">{{moneda}}</option>
+
+        </select>
+
+      </div>
+    </div>
+
+    <h5 *ngIf="cantidad>0" class="text-center mt-3" >
+    <span class="badge text-bg-success"> {{cantidad }} {{tengo}}</span>
+    <span class="badge text-bg-secondary">Son</span>
+    <span class="badge text-bg-success">{{total | number: '0.0-2'}} {{ quiero}}</span>
+  </h5>
+  </div>
+
